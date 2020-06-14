@@ -288,8 +288,80 @@ The directory that contains variable data files. Some examples of these types of
 
 * used to store transient files
 
-* file sthat may need to be written early in system startup, but don't need to be preserved in a reboot
+* files that may need to be written early in system startup, but don't need to be preserved in a reboot
 
 * generally implemented as an empty mount point
 
 * mount with tmpfs ram disk so behaves like a psuedo-filesystem existing only in memory
+
+
+## Labs
+
+### Lab: Sizes of the Default Linux Directories
+
+For this I just set up a `ubuntu 18.04 bionic` on a baby `f1-micro` in GCP
+
+Then you just hop over to the cloud shell
+
+Type in `gcloud compute instances list` and then `gcloud compute ssh ubuntu01 --zone=us-central1-a` and boom you are ssh'd in 
+
+You are asked to get the  size of the files in the top level directory
+
+Use : `sudo du --max-depth=1 -hx /` 
+
+* du is disk usage
+
+* --max-depth=n is --max-depth=N     print the total for a directory (or file, with --all)
+                          only if it is N or fewer levels below the command
+                          line argument;  --max-depth=0 is the same as
+                          --summarize
+
+* -h is for human readable -x is on one file system (skips things on different file systems)
+
+
+### Lab: Touring the /proc Filesystem
+
+```bash
+
+cd /proc
+ls -F
+cat /proc/cpuinfo
+cat /proc/meminfo
+cat /proc/mounts
+cat /proc/swaps
+cat /proc/version
+cat /proc/partitions
+cat /proc/interrupts
+```
+
+
+## Questions
+
+According to Filesystem Hierarchy Standard (FHS), which top level directory (under /, such as /tmp, not /tmp/other) should be used for system-wide configuration files for all users?
+
+* /etc
+
+According to Filesystem Hierarchy Standard (FHS), which op level directory (under /, such as /tmp, not /tmp/other) should contain individual user files, such as settings and stored data?
+
+* /home
+
+According to Filesystem Hierarchy Standard (FHS), which top level directory (under /, such as /tmp, not /tmp/other) contains system log files, such as system service messages and web server logs?
+
+* /var
+
+According to Filesystem Hierarchy Standard (FHS), which top level directory (under /, such as /tmp, not /tmp/other) should contain files that are used only for the early stages of system startup, including the compressed Linux kernel (vmlinuz) and initial ram filesystem (initramfs)?
+
+* /boot
+
+
+According to Filesystem Hierarchy Standard (FHS), which top level directory (under /, such as /tmp, not /tmp/other) should contain Linux kernel modules (dynamically loaded and unloaded extensions for the kernel)?
+
+* /lib
+
+There are some directories that contain special entries which abstract system properties, instead of data stored on the disk. Those pseudo-files are very important for the system to function properly. Which of the following directories contain these? Select all that apply.
+
+* /dev
+
+* /proc
+
+* /sys
