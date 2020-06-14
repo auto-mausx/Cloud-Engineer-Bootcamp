@@ -12,3 +12,10 @@ There are some other topics which are necessary for system administrators to be 
 * System installation.
 
 `this is their recommendation.  I will not be doing this as I have being google-ing my way to victory for my undergrad and most of my professional career`
+
+
+## Navigation
+
+* [Home](/README.md)
+
+* [Linux-Filesystem-Tree-Layout](/Essentials-Linux-System-Admin-LFS201/Linux-Filesystem-Tree-Layout/Readme.md)
