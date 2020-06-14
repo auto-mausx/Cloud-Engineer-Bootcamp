@@ -1,9 +1,16 @@
+# set up the provider with my specific details
 provider "google" {
     project = "zarate-linux-admin-fund"
     region = "us-central1"
     zone = "us-central1-a"
 }
 
+# we want a resource of this f1-micro
+# we will pass it the image type in the boot_disk params
+# in network_interface setting it to default will put it in the default VPC
+# and give it a random IP
+# assigning the tags "http-server" and "https-server" will give it internet access
+# if you don't want to have those ports (80, 443) exposed comment out the tags
 resource "google_compute_instance" "vm_instance" {
     name = "micro-ubuntu18"
     machine_type = "f1-micro"
