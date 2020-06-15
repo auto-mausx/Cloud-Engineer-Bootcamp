@@ -106,3 +106,128 @@ and OS design.  Once upon a time you could not preempt a process in execution yo
 * A system administrator may need to change some of these values in either direction:
   * To restrict capabilities so an individual user and/or process cannot exhaust system resources, such as memory, cpu time or the maximum number of processes on the system.
   * To expand capabilities so a process does not run into resource limits; for example, a server handling many clients may find that the default of 1024 open files makes its work impossible to perform.
+
+
+## Process states
+
+* Running
+  * executing or sitting in the **run queue** 
+
+* Sleeping --- waiting, usually on I/O
+
+* Stopped
+  * process has been suspended
+  * usually happens when a programmer wants to examine the executing programs memory, CPU registers, flags etc
+  * usually done by a debugger
+
+* Zombie
+  * also called a **defunct** process 
+  * happens when it terminates and no other process as asked about the exit state 
+  * A zombie process has released all of its resources except exit state and its entry in the process table.
+  * if the parent of any process dies, it is adopted by `init` PID=1 or `kthreadd` PID=2
+
+## Execution Modes
+
+### User Mode
+
+* except when executing a system call, process execute in user mode where they have lesser privileges than in kernel mode
+
+* this will follow the guidelines of **process resource isolation**
+
+### System Mode
+
+* only the system itself runs here 
+
+* no application may ever live here
+
+* even processes start off as `root` go to user mode
+
+* any type of system managed hardware that an app wants to use must do so through a system call
+
+
+## Daemons
+
+A daemon process is a background process whose sole purpose is to provide some specific service to users of the system:
+
+* Daemons can be quite efficient because they only operate when needed.
+* Many daemons are started at boot time.
+* Daemon names often (but not always) end with d.
+* Some examples include `httpd` and `systemd-udevd`.
+* Daemons may respond to external events (`systemd-udevd`) or elapsed time (`crond`).
+* Daemons generally have no controlling terminal and no standard input/output devices.
+* Daemons sometimes provide better security control.
+
+
+## Creating Processes
+
+* An average Linux system is always creating new processes. This is often called `forking`; the original parent process keeps running, while the new child process starts.
+
+* Often, rather than just a fork, one follows it with an `exec`, where the parent process terminates, and the child process inherits the process ID of the parent. The term `fork` and `exec` is used so often, people think of it sometimes as one word.
+
+## Creating Processes in a Command Shell
+
+* A new process is created (forked from the user's login shell).
+
+* A wait system call puts the parent shell process to sleep.
+
+* The command is loaded onto the child process's space via the exec system call. In other words, the code for the command replaces the bash program in the child process's memory space.
+* The command completes executing, and the child process dies via the exit system call.
+* The parent shell is re-awakened by the death of the child process and proceeds to issue a new shell prompt. 
+
+* The parent shell then waits for the next command request from the user, at which time the cycle will be repeated.
+
+* **background processing** is done by using the `&` at the end of the command
+
+* `tar -czf home.tar.gz . &` will not show the verbiage of the command and dump it into the background
+
+* helpful if you already know the command will work and done want to dump a bunch of gargabe onto the screen
+
+* Some shell commands (such as `echo` and `kill`) are built into the shell itself, and do not involve loading of program files. For these commands, no fork or exec are issued for the execution.
+
+## Using nice to set priorities
+
+* process priority can be controlled with `nice` and `renice`
+
+* niceness (cute) can range -20 (the highest) to +19 the lowest
+
+* `renice` is used to change the nice value on the fly
+
+* only root can *decrease* niceness
+
+## Static and Shared Libraries
+
+* **Static** -- the code for the library function is inserted in the program at compile time and does not change thereafter even if the library is updated
+
+* **Shared** -- The cod for the library functions is loaded into the pgram at run time and if the library is changed later, the program runs withy the new library modifications
+
+* shared libraries are more efficient because they can be used by many apps at once
+
+* shared libraries are also called Dynamic LInk Libraries (DLLs)
+
+### Shared Library Versions
+
+* when there are major changes to Libraries (think Python 2.7 -> Python 3.0) It can break a ton of things
+
+* you can have a program have any specific Major Version 
+
+* most programs will just use `latest`
+  * My own thoughts on this your SDLC and delivery pipelines should be robust enough to handle migrating a code base from one major version to another.
+  * Also using older versions is just asking for security problems
+  * there are people still using Windows 7 and I am just like but why???
+
+* Shared libraries have the extension `.so.` a full version of this would look like:
+  * `libc.so.N` where `N` is the major version number
+
+### Finding Shared Libraries
+
+* `ldd` can be used to ascertain what shared libraries an app needs.
+
+* `ldd` will show the `soname` of the library and where it points too
+
+* as an example `ldd /usr/bin/vi` will dump out where the libraries are and where they happen to be in memory
+
+* `ldconfig` is generally run a boot time (but can be run anytime)\
+
+* it uses `/etc/ld.so.conf` which list the directories that will be searched for shared libraries
+
+* `ldconfig` must be run as root and shared libraries should only be stored in system directories when they are stable and useful
