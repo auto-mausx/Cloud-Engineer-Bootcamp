@@ -231,3 +231,44 @@ A daemon process is a background process whose sole purpose is to provide some s
 * it uses `/etc/ld.so.conf` which list the directories that will be searched for shared libraries
 
 * `ldconfig` must be run as root and shared libraries should only be stored in system directories when they are stable and useful
+
+
+## Lab 3.1 Controlling Processes with ulimit
+
+### Commands
+
+bash commands used
+
+```bash
+help ulimit
+ulimit -n
+ulimit -S -n
+ulimit -H -n
+ulimit -n hard
+ulimit -n
+clear
+ulimit -n 2048
+ulimit -n
+ulimit -n 4096
+sudo ulimit -n 4096
+sudo su
+ulimit -n
+history
+```
+
+I honestly Have no idea why this is important other than just controlling a process with limits. My only guess is that you have a host that is a webserver and you don't want the web server to completely dominate the host.
+
+But if that is the case you'd realistically just scale out and put a Layer 7 Load Balancer in front of your hosts
+
+## Lab 3.2: Examining System V IPC Activity
+
+* `System V IPC` is a rather old method of Inter Process Communication that dates back to the early days of UNIX.
+
+* It involves three mechanisms:
+  * Shared Memory Segments
+  * Semaphores
+  * Message Queues
+
+* More modern programs tend to use `POSIX IPC` methods for all three of these mechanisms, but there are still plenty of `SystemV IPC` applications found in the wild
+
+`ipcs`  returned nothing in my ubuntu 18 lts GCE vm.
