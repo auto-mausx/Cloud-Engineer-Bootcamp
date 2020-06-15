@@ -120,3 +120,24 @@ They give a HUGE list of different types "Revision Control Systems"
 * also I need GitOps in my life
 
 ## Lab 5.1 Version Control with git
+
+### Commands I used
+
+```bash
+mkdir git-test && cd git-test
+git init
+ls -l
+ls -l .git
+echo some junk> junkfile.txt
+git add -A
+git status
+git config user.name "bob"
+git config user.email "bob@thebuilder.net"
+cat junkfile.txt
+echo some more junk >> junkfile.txt
+cat junkfile.txt
+git diff
+git commit -m "my initial commit"
+git log
+git log --all --decorate --oneline --graph
+```
