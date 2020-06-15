@@ -20,4 +20,7 @@ There are some other topics which are necessary for system administrators to be 
 
 * [Linux-Filesystem-Tree-Layout](/Essentials-Linux-System-Admin-LFS201/Linux-Filesystem-Tree-Layout/Readme.md)
 
-* [Processes](Essentials-Linux-System-Admin-LFS201/Processes/Readme.md)
+* [Processes](/Essentials-Linux-System-Admin-LFS201/Processes/Readme.md)
+
+* [Signals](/Essentials-Linux-System-Admin-LFS201/Signals/Readme.md)
+
