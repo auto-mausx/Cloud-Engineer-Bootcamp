@@ -24,3 +24,5 @@ There are some other topics which are necessary for system administrators to be 
 
 * [Signals](/Essentials-Linux-System-Admin-LFS201/Signals/Readme.md)
 
+* [Package Management Systems](/Essentials-Linux-System-Admin-LFS201/Package-Management-Systems/Readme.md)
+
