@@ -213,3 +213,17 @@ For the times you want to archive a rpm package
 * `rpm2cpi` will convert a package to a `cpio` archive
 
 * you can also extract files, just keep in mind it will happen in the current directory
+
+
+
+## Lab 6.1
+
+commands used
+
+```bash
+rpm -qf /etc/logrotate.conf
+rpm -qil logrotate
+rpm -qil $(rpm -qf /etc/logrotate.conf)
+rpm -V logrotate
+sudo rpm -e logrotate
+```
