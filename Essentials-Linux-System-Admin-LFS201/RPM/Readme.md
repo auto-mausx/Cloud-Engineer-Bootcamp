@@ -204,3 +204,12 @@ BUT, you can `-i` and install both kernels and you can pick which one to boot in
 To install a new kernel on a RHEL based system:
 
 * `sudo rpm -ivh kernel-{version}.{arch}.rpm`
+
+
+## Using rpm2cpio
+
+For the times you want to archive a rpm package
+
+* `rpm2cpi` will convert a package to a `cpio` archive
+
+* you can also extract files, just keep in mind it will happen in the current directory
