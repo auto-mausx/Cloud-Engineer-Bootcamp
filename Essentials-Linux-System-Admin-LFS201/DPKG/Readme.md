@@ -91,3 +91,13 @@ Verify the installed package's integrity:
 * List information about the package including all the files it contains.
 * Verify the package installation.
 * Try to remove the package
+
+Commands used:
+
+```bash
+dpkg --help
+pkg -S /etc/logrotate.conf
+dpkg -L logrotate
+dpkg -V logrotate
+sudo dpkg -r logrotate
+```
