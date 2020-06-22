@@ -215,8 +215,15 @@ For the times you want to archive a rpm package
 * you can also extract files, just keep in mind it will happen in the current directory
 
 
-
 ## Lab 6.1
+
+1. Find out what package the file/etc/logrotate.confbelongs to.
+
+2. List information about the package including all the files it contains.
+
+3. Verify the package installation.
+
+4. Try to remove the package
 
 commands used
 
@@ -227,3 +234,7 @@ rpm -qil $(rpm -qf /etc/logrotate.conf)
 rpm -V logrotate
 sudo rpm -e logrotate
 ```
+
+## Lab 6.2
+
+reminder to redo
