@@ -126,3 +126,72 @@ NOTE: *`dnf` does not have an equivalent verify plugin command or option*
 * [Use the DNF software package manager](https://docs.fedoraproject.org/en-US/quick-docs/dnf/)
 
 * [Link to DNF.io](https://dnf.readthedocs.io/en/latest/)
+
+
+## Lab 8.1 - yum commands
+
+* Check to see if there are any available updates for your system.
+  * `sudo yum update`  OR  -- this is the only one that will actually try to update
+  * `sudo yum check-update` OR
+  * `sudo yum list updates`
+
+* Update a particular package.
+  * `sudo yum update bash`
+
+* List all installed kernel-related packages, and list all installed or available ones.
+  * `sudo yum list installed "kernel*"`
+
+* Install the `httpd`package, or anything else you might not have installed yet. Doing a simple: `$ sudo yum list` will let you see a complete list; you may want to give a wildcard argument to narrow the list
+  * `sudo yum install httpd -y`
+
+
+## Lab 8.2 use yum to dig up information about a package
+
+Using yum
+
+* find all packages that contain a reference to `bash`
+  * `sudo yum search bash`
+
+* find all installed available packages for `bash`
+  * `sudo yum list bash`
+
+* find the package information for `bash`
+  * `sudo yum info bash`
+
+* find the dependencies for the `bash` package
+  * `sudo yum deplist bash`
+
+## Lab 8.3 Managing groups of packages with yum
+
+* Use the following command to list all package groups available on your system:
+  * `$ sudo yum grouplist`
+
+* Identify theBackup `Clientgroup` and generate the information about this group using the command
+  * `$ sudo yum groupinfo "Backup Client"`
+
+* Install using:
+  * `$ sudo yum groupinstall "Backup Client"`
+
+* Identify  a  package  group  that’s  currently  installed  on  your  system  and  that  you  don’t  need.   Remove  it  `usingyumgroupremoveas` in:
+  * `$ sudo yum groupremove "Backup Client"`
+  
+*Note you will be prompted to confirm removal so you can safely type the command to see how it works.You may find that `thegroupremove` does **not** remove everything that was installed; whether this is a bug or a feature can be discussed.*
+
+
+## Lab 8.4 add new yum repo
+
+* Create a new repository file called `webmin.repoin the/etc/yum.repos.d`directory. It should contain the following:
+
+* see [webmin download](http://www.webmin.com/download.html)
+
+* see [webmin on sourceforge](https://sourceforge.net/projects/webadmin/)
+
+```bash
+[Webmin]
+name=Webmin
+Distribution Neutral
+baseurl=http://download.webmin.com/download/yum
+mirrorlist=http://download.webmin.com/download/yum/mirrorlist
+enabled=1
+gpgcheck=0
+```
