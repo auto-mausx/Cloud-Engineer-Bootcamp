@@ -30,12 +30,11 @@ High level package managers like `yum dnf apt zypper` use databases and software
 
 * Save time because there is no need to either download packages manually or search out dependency information separately.
 
-
 ## What is YUM
 
 * `yum` is the front end to `rpm`
 
-* primary task : fetch packages from multiple remote repose and resolve depending among packages 
+* primary task : fetch packages from multiple remote repose and resolve depending among packages
 
 * used in RHEL CentOS Sci-linux and Fedora
 
@@ -51,12 +50,12 @@ High level package managers like `yum dnf apt zypper` use databases and software
 
 * Search functionality:
   * `sudo yum search keyword` -- gives more info about the packages
-  * `sudo yum list "*keyword*"` -- what is installed vs what is availble
+  * `sudo yum list "*keyword*"` -- what is installed vs what is available
 
 * Detailed info:
   * `sudo yum info package`
 
-* List pakages:
+* List packages:
   * `sudo yum list [installed | updates | available]`
 
 * show package groups:
@@ -66,7 +65,7 @@ High level package managers like `yum dnf apt zypper` use databases and software
 * show packages to contain a certain file name
   * `sudo yum /path/to/file`
 
-## Verifying Pcakges
+## Verifying Packages
 
 *package verification requires the installation of `yum-plugin-verify` package!!*
 
@@ -83,7 +82,7 @@ High level package managers like `yum dnf apt zypper` use databases and software
 
 NOTE: *`dnf` does not have an equivalent verify plugin command or option*
 
-## Installing / Removing / Upgrading Packages 
+## Installing / Removing / Upgrading Packages
 
 * to install and resolve package dependencies
   * `sudo yum install package`  -- like sudo yum install docker
@@ -99,4 +98,31 @@ NOTE: *`dnf` does not have an equivalent verify plugin command or option*
 
 * remove package
   * `sudo yum remove package`
-  * *note: don't run with -y as it will auto confirm and delete package dependencies to, which may not be what you are trying to do* 
+  * *note: don't run with -y as it will auto confirm and delete package dependencies to, which may not be what you are trying to do*
+
+## Additional YUM Commands
+
+* list installed plugins
+  * `sudo yum list "yum-plugin*"`
+
+* show list of enabled repos
+  * `sudo yum repolist`
+
+* start interactive shell to run multiple YUM commands
+  * `sudo yum shell [text-file]` -- yum will read in commands from text file
+
+* to download packages and not install them -- they will go into the `/var/cache/yum/ directory
+  * `sudo yum install --downloadonly package`
+
+* show history
+  * `sudo yum history` -- surprise surprise
+
+## DNF
+
+* `dnf` is supposed to be a replacement for `yum` it will underline `yum` in RHEL8
+
+* you can use `dnf` on Fedora distros and will point a yum command to a dnf equivalent
+
+* [Use the DNF software package manager](https://docs.fedoraproject.org/en-US/quick-docs/dnf/)
+
+* [Link to DNF.io](https://dnf.readthedocs.io/en/latest/)
