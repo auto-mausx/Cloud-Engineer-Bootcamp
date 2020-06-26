@@ -32,10 +32,10 @@ There are some other topics which are necessary for system administrators to be 
 
 * [YUM](/Essentials-Linux-System-Admin-LFS201/YUM/Readme.md)
 
-* [ZYPPER]
+* [ZYPPER](/Essentials-Linux-System-Admin-LFS201/Zypper/Readme.md)
 
-* [APT]
+* [APT](/Essentials-Linux-System-Admin-LFS201/APT/Readme.md)
 
-* [System Monitoring]
+* [System Monitoring](/Essentials-Linux-System-Admin-LFS201/System-Monitoring/Readme.md)
 
-* [Process Monitoring]
+* [Process Monitoring](Essentials-Linux-System-Admin-LFS201/Process-Monitoring/Readme.md)
