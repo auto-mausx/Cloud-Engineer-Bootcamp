@@ -61,3 +61,33 @@
 
 * Clean out cache files and any archived package files that have been installed:
   * `sudo apt clean`
+
+## Lab 8.1
+
+Basic APT Commands:
+
+```bash
+sudo apt update
+sudo apt upgrade
+apt-cache search "kernel"
+apt-cache search -n "kernel"
+sudo apt install apache2-dev
+```
+
+## Lab 8.2
+
+Using apt to find information about a package
+
+```bash
+apt-cache search bash
+apt-cache search -n bash
+apt-cache show bash
+apt-cache depends bash
+apt-cache rdepends bash
+```
+
+## Quiz
+
+apt update does not accept a package as argument -- true
+
+`apt-file find <file path>` can't be used to find which package provides the file specified as argument true

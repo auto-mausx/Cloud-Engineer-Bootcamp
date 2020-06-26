@@ -35,3 +35,7 @@ There are some other topics which are necessary for system administrators to be 
 * [ZYPPER]
 
 * [APT]
+
+* [System Monitoring]
+
+* [Process Monitoring]
