@@ -106,8 +106,7 @@ If no other arguments are given, you can see what vmstat displays, where the fir
 
 the kernel permits overcommission of memory, but only for pages dedicated to user processes; pages used within the kernel are not swappable and are always allocated at request time.
 
-You can modify, and even turn off this overcommission b
-y setting the value of `/proc/sys/vm/overcommit_memory`:
+You can modify, and even turn off this overcommission by setting the value of `/proc/sys/vm/overcommit_memory`:
 
 0. (default) Permit overcommission, but refuse obvious overcommits, and give root users somewhat more memory allocation than normal users.
 
