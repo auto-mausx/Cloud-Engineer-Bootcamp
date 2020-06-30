@@ -62,3 +62,15 @@ You can find currently supported filesystem in `/proc/filesystems/`
 ## Journaling Filesystems 
 
 In a journaling filesystem, operations are grouped into transactions. A transaction must be completed without error, atomically; otherwise, the filesystem is not changed. A log file is maintained of transactions. When an error occurs, usually only the last transaction needs to be examined.
+
+* ext3
+
+* ext4
+
+* reiserfs
+
+* JFS
+
+* XFS
+
+* btrfs
