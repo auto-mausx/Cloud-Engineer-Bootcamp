@@ -190,3 +190,28 @@ You should see the **OOM**(Out of Memory) killer swoop in and try to kill proces
 
 
 Who gets clobbered first?
+
+
+## Check on Learning
+
+
+### 13.1:
+Disabling all swap partitions increases the chances of the system invoking the OOM-killer. True or False?
+
+* True
+
+### 13.2:
+Memory used for file caching has more priority than memory used by system processes. The OOM-killer is invoked if there is insufficient memory for both file caching and the user process. True or False?
+
+* False
+
+### 13.3:
+What is moved to the swap area is never moved back to the main memory. True or False?
+
+* False
+
+### 13.4:
+The field MemFree entry in /proc/meminfo shows the amount of memory that is not utilized, but the file caching could also be considered free memory as the kernel would release memory used by the cache if applications need more memory. True or False?
+
+* True
+
