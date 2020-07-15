@@ -99,3 +99,15 @@ When you want to know what the system is spending its time on, the first tool yo
 4. Run the jobs program. What does it tell you?
 
 5. Bring the job back to the foreground, then terminate it using kill from another window
+
+## Check on learning
+
+1. Which of the following are process monitoring tools? Select all answers that apply.
+        
+    - ps
+    - pstree
+    - top
+
+2. Which command will show the parent process IDs (PPIDs) for all the processes on the system?
+
+    - ps -elf
